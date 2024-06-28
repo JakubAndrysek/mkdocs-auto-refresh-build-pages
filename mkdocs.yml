@@ -1,0 +1,94 @@
+site_name: MkDocs - Auto Refresh Build Pages
+site_url: https://refresh.kubaandrysek.cz/
+site_author: Jakub Andrýsek
+site_description: >-
+  MkDocs plugin that automatically refreshes the build pages when the bage has been rebuilt.
+
+# Repository
+repo_name: JakubAndrysek/mkdocs-auto-refresh-build-pages
+repo_url: https://github.com/JakubAndrysek/mkdocs-auto-refresh-build-pages
+edit_uri: edit/main/docs/
+
+# Copyright
+copyright: Copyright © Jakub Andrýsek
+
+theme:
+  name: material
+  language: en
+  logo: assets/logo.png
+  favicon: assets/logo.png
+  features:
+    - navigation.tabs
+    - navigation.indexes
+    - navigation.top
+    - content.action.edit
+    - content.action.view
+    - navigation.tracking
+    - navigation.expand
+    # - navigation.instant for testing purposes
+  icon:
+    repo: fontawesome/brands/github
+
+  palette:
+    # Palette toggle for dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: teal
+      accent: teal
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+
+    # Palette toggle for light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: teal
+      accent: teal
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/JakubAndrysek
+    - icon: fontawesome/brands/twitter
+      link: https://twitter.com/KubaAndrysek
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/in/jakub-andrysek/
+  # analytics:
+  #   provider: google
+  #   property: G-XXXXXXXXXX
+  #   feedback:
+  #     title: Was this page helpful?
+  #     ratings:
+  #       - icon: material/emoticon-happy-outline
+  #         name: This page was helpful
+  #         data: 1
+  #         note: >-
+  #           Thanks for your feedback!
+  #       - icon: material/emoticon-sad-outline
+  #         name: This page could be improved
+  #         data: 0
+  #         note: >-
+  #           Thanks for your feedback!
+
+use_directory_urls: True
+
+plugins:
+  - search
+  - open-in-new-tab
+  - auto-refresh-build-pages:
+      update_message: "The page has been updated. Do you want to reload?"
+      yes_button_text: "Yes"
+      no_button_text: "No"
+
+markdown_extensions:
+  - pymdownx.highlight
+  - pymdownx.superfences
+  - admonition
+  - pymdownx.details
+  - attr_list
+
+nav:
+  - Home: "README.md"

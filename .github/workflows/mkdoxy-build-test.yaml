@@ -1,0 +1,27 @@
+name: Build and test docs with all supported Python versions
+
+on: [push, pull_request]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.x
+      # You can test your matrix by printing the current Python version
+      - name: Display Python version
+        run: python -c "import sys; print(sys.version)"
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install -e ".[dev]"
+      - name: Build docs
+        run: |
+          python -m pip install -e .\[dev\]
+          make fixRelativeLinkDocs
+          mkdocs build --clean --strict --verbose
