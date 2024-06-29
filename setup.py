@@ -1,5 +1,7 @@
 from setuptools import setup, find_packages
 
+__version__ = "1.0.1"
+
 
 def readme():
     with open("README.md") as f:
@@ -21,7 +23,7 @@ def import_dev_requirements():
 # https://pypi.org/project/mkdocs-auto-refresh-build-pages
 setup(
     name="mkdocs-auto-refresh-build-pages",
-    version="1.0.0",
+    version=__version__,
     description="MkDocs plugin that automatically refreshes the build pages when the page has been rebuilt.",
     long_description=readme(),
     long_description_content_type="text/markdown",
