@@ -35,13 +35,13 @@ plugins:
       update_message: "The page has been updated. Do you want to reload?"
       yes_button_text: "Yes"
       no_button_text: "No"
-      check_interval_seconds: 5
+      check_interval_seconds: 60
 ```
 
 - `update_message` (optional): The message that will be displayed when the page is updated. Default: "The page has been updated. Do you want to reload?"
 - `yes_button_text` (optional): The text of the "Yes" button. Default: "Yes"
 - `no_button_text` (optional): The text of the "No" button. Default: "No"
-- `check_interval_seconds` (optional): The interval in seconds at which the page will be checked for updates. Default: 5
+- `check_interval_seconds` (optional): The interval in seconds at which the page will be checked for updates. Default: 60s (1 minute)
 
 ## Example screenshot
 
