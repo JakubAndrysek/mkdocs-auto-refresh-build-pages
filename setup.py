@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 
-__version__ = "1.0.1"
+__version__ = "1.0.2"
 
 
 def readme():
@@ -48,6 +48,8 @@ setup(
         "Operating System :: OS Independent",
     ],
     packages=find_packages(),
+    # include file: auto_refresh_build_pages/js/auto_refresh_build_pages.js.jinja
+    package_data={"auto_refresh_build_pages": ["js/auto_refresh_build_pages.js.jinja"]},
     include_package_data=True,
     entry_points={
         "mkdocs.plugins": [

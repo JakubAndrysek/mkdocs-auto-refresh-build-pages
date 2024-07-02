@@ -14,7 +14,11 @@
 
 
 
-MkDocs plugin that automatically refreshes the build pages when the documentation is updated.
+MkDocs plugin for live development in production. The plugin adds a popup window that asks the user if he wants to reload the (compiled) page when the page has been updated.
+This tool is useful when you are deploying your MkDocs pages to production and you want to inform the user that the page has been updated.
+
+We are using this plugin on the [Robotic Camp](https://robotickytabor.cz) when we quickly need to update the page and we want to inform the participants that the programming guide has been updated.
+
 
 ## Installation
 
@@ -35,17 +39,17 @@ plugins:
       update_message: "The page has been updated. Do you want to reload?"
       yes_button_text: "Yes"
       no_button_text: "No"
-      check_interval_seconds: 5
+      check_interval_seconds: 60
 ```
 
 - `update_message` (optional): The message that will be displayed when the page is updated. Default: "The page has been updated. Do you want to reload?"
 - `yes_button_text` (optional): The text of the "Yes" button. Default: "Yes"
 - `no_button_text` (optional): The text of the "No" button. Default: "No"
-- `check_interval_seconds` (optional): The interval in seconds at which the page will be checked for updates. Default: 5
+- `check_interval_seconds` (optional): The interval in seconds at which the page will be checked for updates. Default: 60s (1 minute)
 
 ## Example screenshot
 
-<img src="./media/popup.png" alt="example" style="border: 2px solid black;">
+<img src="https://raw.githubusercontent.com/JakubAndrysek/mkdocs-auto-refresh-build-pages/main/docs/media/popup.png" alt="example" style="border: 2px solid black;">
 
 
 ## Contributing
