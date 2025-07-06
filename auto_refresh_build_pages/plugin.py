@@ -22,6 +22,7 @@ class AutoRefreshBuildPagesConfig(Config):
     yes_button_text = c.Type(str, default="Yes")
     no_button_text = c.Type(str, default="No")
     check_interval_seconds = c.Type(int, default=60)  # in seconds
+    force_show = c.Type(bool, default=False)  # Force show popup for debugging
 
 
 class AutoRefreshBuildPages(BasePlugin[AutoRefreshBuildPagesConfig]):
@@ -48,6 +49,7 @@ class AutoRefreshBuildPages(BasePlugin[AutoRefreshBuildPagesConfig]):
             yes_button_text=self.config.yes_button_text,
             no_button_text=self.config.no_button_text,
             check_interval_seconds=self.config.check_interval_seconds,
+            force_show=self.config.force_show,
         )
 
         js_output = Path(config["site_dir"]) / "js" / "auto_refresh_build_pages.js"

@@ -83,6 +83,7 @@ plugins:
       yes_button_text: "Yes"
       no_button_text: "No"
       check_interval_seconds: 60
+      # force_show: true
 
 markdown_extensions:
   - pymdownx.highlight

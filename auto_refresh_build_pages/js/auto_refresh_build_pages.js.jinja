@@ -27,6 +27,12 @@ async function checkForUpdate() {
     const storedModified = localStorage.getItem('lastModified');
     const popupShown = localStorage.getItem('popupShown');
 
+    // Force show popup for debugging if enabled
+    if ({{ force_show|lower }}) {
+      showUpdatePopup(latestModified);
+      return;
+    }
+
     if (storedModified &&
         new Date(storedModified).getTime() !==
             new Date(latestModified).getTime() &&
@@ -49,20 +55,33 @@ function showUpdatePopup(latestModified) {
   const popup = document.createElement('div');
   popup.id = 'update-popup';
   popup.style.position = 'fixed';
-  popup.style.bottom = '10px';
-  popup.style.left = '10px';
-  popup.style.backgroundColor = 'rgba(0,0,0,0.9)';
-  popup.style.fontSize = '16px';
+  popup.style.top = '20px';
+  popup.style.left = '50%';
+  popup.style.transform = 'translateX(-50%)';
+  popup.style.backgroundColor = 'rgba(0,0,0,0.95)';
+  popup.style.fontSize = '18px';
   popup.style.color = 'white';
-  popup.style.padding = '10px';
-  popup.style.borderRadius = '5px';
-  popup.style.zIndex = '1000';
+  popup.style.padding = '20px 30px';
+  popup.style.borderRadius = '10px';
+  popup.style.zIndex = '10000';
+  popup.style.boxShadow = '0 4px 20px rgba(0,0,0,0.5)';
+  popup.style.border = '2px solid #007acc';
+  popup.style.minWidth = '300px';
+  popup.style.textAlign = 'center';
   popup.textContent = '{{ update_message }}';
 
   const yesButton = document.createElement('button');
   yesButton.textContent = '{{ yes_button_text }}';
   yesButton.style.marginLeft = '10px';
+  yesButton.style.marginTop = '15px';
+  yesButton.style.padding = '8px 16px';
+  yesButton.style.backgroundColor = '#007acc';
   yesButton.style.color = 'white';
+  yesButton.style.border = 'none';
+  yesButton.style.borderRadius = '5px';
+  yesButton.style.cursor = 'pointer';
+  yesButton.style.fontSize = '14px';
+  yesButton.style.fontWeight = 'bold';
   yesButton.onclick = () => {
     window.location.reload();
   };
@@ -70,7 +89,15 @@ function showUpdatePopup(latestModified) {
   const noButton = document.createElement('button');
   noButton.textContent = '{{ no_button_text }}';
   noButton.style.marginLeft = '10px';
+  noButton.style.marginTop = '15px';
+  noButton.style.padding = '8px 16px';
+  noButton.style.backgroundColor = '#666';
   noButton.style.color = 'white';
+  noButton.style.border = 'none';
+  noButton.style.borderRadius = '5px';
+  noButton.style.cursor = 'pointer';
+  noButton.style.fontSize = '14px';
+  noButton.style.fontWeight = 'bold';
   noButton.onclick = () => {
     document.body.removeChild(popup);
   };
